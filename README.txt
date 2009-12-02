@@ -4,17 +4,17 @@ Keeps track of users visiting your site, tracking where they are in
 your application.  This will use the user's IP address (converted to a database friendly int).
 
 @author Nick Baker
-@version 1.0
+@version 1.0.1
 @link http://www.webtechnick.com
 @email nick@webtechnick.com
 
-@svn http://svn.xp-dev.com/svn/online-plugin/ 
+@svn svn checkout http://svn.xp-dev.com/svn/online-plugin/trunk online 
 
 Changelog:
   1.0: Initial Release
 
 Get the Plugin:
-  svn checkout http://svn.xp-dev.com/svn/online-plugin/ online
+  svn checkout http://svn.xp-dev.com/svn/online-plugin/trunk online
   http://projects.webtechnick.com/online.tar.gz
 
 Setup:
@@ -22,7 +22,7 @@ Setup:
  1) Copy /online into app/plugins/online
  
  2a) Run the online.sql into your database
- 2b) Run "cake schema run create -path plugins/online/config/sql -name online
+ 2b) Run cake schema run create -path plugins/online/config/sql -name online
    note: if you choose the cake schema route I suggest changing your database engine
    to MEMORY as it will be faster to access/write than default.
  
