@@ -70,6 +70,11 @@ class Online extends OnlineAppModel {
     return long2ip($number);
   }
   
+  /**
+    * Assigns the real_ip to the returning find results.
+    * 
+    * @return array of results cakePHP style with 'real_ip' set as a new key
+    */
   function afterFind($results){
     foreach($results as $key => $val){
       if(isset($val[$this->alias]['ip'])){
