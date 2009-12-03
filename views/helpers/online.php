@@ -1,10 +1,15 @@
 <?php
-/** Online helper for the Online Plugin
-  *
-  * @author Nick Baker
-  * @link http://www.webtechnick.com
-  * @version 1.0
-  */
+/**
+* Online Helper
+*
+* Used to retrieve the currently online users from the online plugin
+*
+* @copyright    Copyright 2009, Webtechnick
+* @link         http://www.webtechnick.com
+* @author       Nick Baker
+* @version      1.1
+* @license      MIT
+*/
 class OnlineHelper extends AppHelper {
   
   function all(){

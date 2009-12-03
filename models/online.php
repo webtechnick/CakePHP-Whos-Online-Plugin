@@ -1,4 +1,15 @@
 <?php
+/**
+* Online Model
+*
+* Tracks users on the site
+*
+* @copyright    Copyright 2009, Webtechnick
+* @link         http://www.webtechnick.com
+* @author       Nick Baker
+* @version      1.1
+* @license      MIT
+*/
 class Online extends OnlineAppModel {
   var $name = 'Online';
   var $primaryKey = 'ip';
