@@ -53,7 +53,7 @@ class Online extends OnlineAppModel {
   /**
     * Helper method to give me ten minutes ago non MySQL related
     *
-    * @return MySQL datetime stamp of ten minutes ago.
+    * @return string MySQL datetime stamp of ten minutes ago.
     */
   function _tenMinAgo(){
     $tenMin = 10*60;

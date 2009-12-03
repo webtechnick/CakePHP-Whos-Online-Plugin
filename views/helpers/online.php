@@ -14,7 +14,7 @@ class OnlineHelper extends AppHelper {
   
   /** Returns an associative cakePHP array of all currently online users
     * 
-    * @return cakePHP associative array of all online users
+    * @return array cakePHP associative array of all online users
     */
   function all(){
     //App::import('Model', 'Online.Online');
