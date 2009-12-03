@@ -7,6 +7,8 @@ class Online extends OnlineAppModel {
   /**
     * Clear the table of old online stats
     * Update the user to the current url
+    *
+    * @param $url of the user currently accessing the app ($this->here from a controller)
     */
   function update($url = null){
     $this->deleteOld();
@@ -26,6 +28,8 @@ class Online extends OnlineAppModel {
   
   /**
     * Update the user to the current url
+    *
+    * @param $url of the user currently accessing the app ($this->here from a controller)
     */
   function updateUser($url = null){
     $save_data = array(
@@ -37,6 +41,8 @@ class Online extends OnlineAppModel {
   
   /**
     * Helper method to give me ten minutes ago non MySQL related
+    *
+    * @return MySQL datetime stamp of ten minutes ago.
     */
   function _tenMinAgo(){
     $tenMin = 10*60;
@@ -45,6 +51,9 @@ class Online extends OnlineAppModel {
   
   /**
     * converts an IP address to a number for the database.
+    *
+    * @param $IPaddress string to convert to an int
+    * @return int of converted IPaddress.
     */
   function _ipAddressToNumber($IPaddress = null){
     $retval = 0;
