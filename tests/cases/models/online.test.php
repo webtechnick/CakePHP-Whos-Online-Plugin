@@ -23,13 +23,14 @@ class OnlineTestCase extends CakeTestCase {
 		$expected = array('Online' => array(
 			'ip'  => 123456789,
       'url'  => '/home',
-      'modified' => '2009-11-30 15:25:04'
+      'modified' => '2009-11-30 15:25:04',
+      'real_ip' => '7.91.205.21'
 	  ));
 		$this->assertEqual($results, $expected);
 	}
 	
 	function testUpdateUser(){
-	  $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+	  $_SERVER['REMOTE_ADDR'] = '214.146.48.154';
 	  $this->Online->updateUser('/new/path.xml');
 	  
 	  $results = $this->Online->find('first', array('order' => 'Online.modified DESC'));

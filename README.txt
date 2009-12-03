@@ -24,8 +24,9 @@ Setup:
  
  2a) Run the online.sql into your database
  2b) Run cake schema run create -path plugins/online/config/sql -name online
-   note: if you choose the cake schema route I suggest changing your database engine
+   note: If you choose the cake schema route -- I suggest changing your database engine
    to MEMORY as it will be faster to access/write than default.
+   note2: if you choose the cake schema route -- change the ip column to 'unsigned' 
  
  3) Add a bit of code to your app_controller.php
   

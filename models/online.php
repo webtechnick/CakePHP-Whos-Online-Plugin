@@ -50,17 +50,31 @@ class Online extends OnlineAppModel {
   }
   
   /**
+    * converts an IP number to an IP address from the database
+    * 
+    * @param int number to convert to IP address
+    * @return String IPaddress
+    */
+  function _NumberToIpAddress($number = null){
+    return long2ip($number);
+  }
+  
+  function afterFind($results){
+    foreach($results as $key => $val){
+      if(isset($val[$this->alias]['ip'])){
+        $results[$key][$this->alias]['real_ip'] = $this->_NumberToIpAddress($val[$this->alias]['ip']);
+      }
+    }
+    return $results;
+  }
+  
+  /**
     * converts an IP address to a number for the database.
     *
     * @param $IPaddress string to convert to an int
     * @return int of converted IPaddress.
     */
   function _ipAddressToNumber($IPaddress = null){
-    $retval = 0;
-    if(!empty($IPaddress)){ 
-      $ips = split ("\.", "$IPaddress"); 
-      $retval = ($ips[3] + $ips[2] * 256 + $ips[1] * 256 * 256 + $ips[0] * 256 * 256 * 256); 
-    }
-    return $retval;
+    return ip2long($IPaddress);
   } 
 }
