@@ -4,13 +4,14 @@ Keeps track of users visiting your site, tracking where they are in
 your application.  This will use the user's IP address (converted to a database friendly int).
 
 @author Nick Baker
-@version 1.1
+@version 1.2
 @link http://www.webtechnick.com
 @email nick@webtechnick.com
 
 @svn svn checkout http://svn.xp-dev.com/svn/online-plugin/trunk online 
 
 Changelog:
+  1.2: Added nicer included element.
   1.1: Added tests.
   1.0: Initial Release
 
