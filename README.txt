@@ -1,26 +1,30 @@
 Online CakePHP Plugin
-
+======================
 Keeps track of users visiting your site, tracking where they are in
 your application.  This will use the user's IP address (converted to a database friendly int).
 
-@author Nick Baker
-@version 1.2
-@link http://www.webtechnick.com
-@email nick@webtechnick.com
+About
+======================
+Author Nick Baker
+Version 1.2
+Link http://www.webtechnick.com
+Email nick@webtechnick.com
 
-@svn svn checkout http://svn.xp-dev.com/svn/online-plugin/trunk online 
+Get it
+======================
+Download: http://projects.webtechnick.com/online.tar.gz
+SVN: http://svn.github.com/webtechnick/CakePHP-Whos-Online-Plugin
+GIT: git@github.com:webtechnick/CakePHP-Whos-Online-Plugin.git 
 
 Changelog:
+======================
   1.2: Added nicer included element.
   1.1: Added tests.
   1.0: Initial Release
 
-Get the Plugin:
-  svn checkout http://svn.xp-dev.com/svn/online-plugin/trunk online
-  http://projects.webtechnick.com/online.tar.gz
 
 Setup:
-
+======================
  1) Copy /online into app/plugins/online
  
  2a) Run the online.sql into your database
@@ -40,7 +44,7 @@ function beforeRender(){
 
 
 See Who's Online:
-
+======================
   I've included a few ways for you to view who's online without too much hassle.
 
 1) Use the built in OnlineHelper:
