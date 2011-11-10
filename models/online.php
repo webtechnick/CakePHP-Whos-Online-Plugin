@@ -43,9 +43,39 @@ class Online extends OnlineAppModel {
     * @param $url of the user currently accessing the app ($this->here from a controller)
     */
   function updateUser($url = null){
+  $stringIp = $_SERVER['REMOTE_ADDR'];
+	$intIp = ip2long($stringIp);
+
+	// Making an API call to Hostip:
+	$xml = file_get_contents('http://api.hostip.info/?ip='.$stringIp);
+	
+	$city = $this->get_tag('gml:name',$xml);
+	$city = $city[1];
+	if($this->is_bot()) {$city = $city."<br>".$this->is_bot();};
+	
+	$countryName = $this->get_tag('countryName',$xml);
+	$countryName = $countryName[0];
+	
+	$countryAbbrev = $this->get_tag('countryAbbrev',$xml);
+	$countryAbbrev = $countryAbbrev[0];
+	
+	$countryName = str_replace('(Unknown Country?)','UNKNOWN',$countryName);
+	if (!$countryName)
+	{
+		$countryName='UNKNOWN';
+		$countryAbbrev='XX';
+		$city='(Unknown City?)';
+	}
+
+	$this->Create();
+
+    
     $save_data = array(
-      'ip'  => $this->_ipAddressToNumber($_SERVER['REMOTE_ADDR']),
-      'url' => $url
+    'ip'  => $this->_ipAddressToNumber($_SERVER['REMOTE_ADDR']),
+    'city' => $city,
+	  'country' => $countryName,
+	  'countrycode' => $countryAbbrev,
+    'url' => $url,
     );
     $this->save($save_data);
   }
@@ -93,4 +123,32 @@ class Online extends OnlineAppModel {
   function _ipAddressToNumber($IPaddress = null){
     return ip2long($IPaddress);
   } 
+
+  function get_tag($tag,$xml){
+  preg_match_all('/<'.$tag.'>(.*)<\/'.$tag.'>$/imU',$xml,$match);
+	return $match[1];
+  }
+
+	function is_bot(){
+		/* This function will check whether the visitor is a search engine robot */
+		
+		$botlist = array("Teoma", "alexa", "froogle", "Gigabot", "inktomi",
+		"looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory",
+		"Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot",
+		"crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp",
+		"msnbot", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz",
+		"Baiduspider", "Feedfetcher-Google", "TechnoratiSnoop", "Rankivabot",
+		"Mediapartners-Google", "Sogou web spider", "WebAlta Crawler","TweetmemeBot",
+		"Butterfly","Twitturls","Me.dium","Twiceler");
+	
+		foreach($botlist as $bot)
+		{
+			if(strpos($_SERVER['HTTP_USER_AGENT'],$bot)!==false)
+			return $bot;	// Is a bot
+		}
+	
+		return false;	// Not a bot
+	}
+
+
 }
