@@ -10,6 +10,7 @@
 * @version      1.1
 * @license      MIT
 */
+App::uses('OnlineAppModel', 'Online.Model');
 class Online extends OnlineAppModel {
   var $name = 'Online';
   var $primaryKey = 'ip';
@@ -75,7 +76,7 @@ class Online extends OnlineAppModel {
     * 
     * @return array of results cakePHP style with 'real_ip' set as a new key
     */
-  function afterFind($results){
+  function afterFind($results, $primary = false){
     foreach($results as $key => $val){
       if(isset($val[$this->alias]['ip'])){
         $results[$key][$this->alias]['real_ip'] = $this->_NumberToIpAddress($val[$this->alias]['ip']);

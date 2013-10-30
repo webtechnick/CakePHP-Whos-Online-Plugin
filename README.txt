@@ -6,18 +6,17 @@ your application.  This will use the user's IP address (converted to a database 
 About
 ======================
 Author Nick Baker
-Version 1.2
+Version 2.0
 Link http://www.webtechnick.com
 Email nick@webtechnick.com
 
 Get it
 ======================
-Download: http://projects.webtechnick.com/online.tar.gz
-SVN: http://svn.github.com/webtechnick/CakePHP-Whos-Online-Plugin
 GIT: git@github.com:webtechnick/CakePHP-Whos-Online-Plugin.git 
 
 Changelog:
 ======================
+	2.0: CakePHP 2.x upgrade
   1.2: Added nicer included element.
   1.1: Added tests.
   1.0: Initial Release
@@ -25,17 +24,17 @@ Changelog:
 
 Setup:
 ======================
- 1) Copy /online into app/plugins/online
+ 1) Copy /Online into app/Plugin/Online
  
  2a) Run the online.sql into your database
- 2b) Run cake schema run create -path plugins/online/config/sql -name online
+ 2b) Run cake schema run create --plugin Online
    note: If you choose the cake schema route -- I suggest changing your database engine
    to MEMORY as it will be faster to access/write than default.
    note2: if you choose the cake schema route -- change the ip column to 'unsigned' 
  
- 3) Add a bit of code to your app_controller.php
+ 3) Add a bit of code to your AppController.php
   
-//app_controller.php
+//AppController.php
 var $uses = array('Online.Online');
 
 function beforeRender(){
@@ -50,7 +49,7 @@ See Who's Online:
 1) Use the built in OnlineHelper:
 
   <?php 
-  $users_online = $online->all();
+  $users_online = $Online->all();
   echo debug($users_online);
   ?>
   
@@ -63,7 +62,7 @@ See Who's Online:
   
 3) Or you can use the built in element (css will be needed to make it look nice)
 
-  <?php echo $this->element('online', array('plugin' => 'online')); ?>
+  <?php echo $this->element('Online.online'); ?>
   
   
 Enjoy!

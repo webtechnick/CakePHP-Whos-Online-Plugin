@@ -10,6 +10,7 @@
 * @version      1.1
 * @license      MIT
 */
+App::uses('OnlineAppController', 'Online.Controller');
 class OnlinesController extends OnlineAppController{
   
   function index(){
@@ -20,4 +21,3 @@ class OnlinesController extends OnlineAppController{
     $this->set(compact('onlines'));
   }
 }
-?>
